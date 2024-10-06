@@ -8,16 +8,62 @@
 </nav>
 
 <h1 class="display-4">Remote Controls</h1>
-<p class="mt-3">Using Kodi requires using a remote control...</p>
+<p class="mt-3">The best experience using Kodi requires using a remote control instead of relying on a keyboard. The <a href="https://kodi.wiki/view/Smartphone/tablet_remotes" target="_blank">remote controls</a> page on the Kodi wiki lists all the types of remote controls and supported devices.</p>
 
-<pre>
-  - Official Kodi remote-control app
-  - Dedicated remotes (Logitech Harmony, etc.)
-  - Web interface
-    - Screenshots
-  
-  </pre>
-  
+<h4 class="mt-4">Keyboard (non-remote) Control</h4>
+<p class="mt-2">First, it should be mentioned you can control Kodi without a remote-control with the use of a keyboard attached to the Kodi box. This is especially useful during the initial configuration of LibreELEC and Kodi. Editing <b>sources</b> for media is much easier using the keyboard! Once configured the Kodi boxes in our house do not have a keyboard attached. A keyboard is kept on-hand to aid in troubleshooting. You can also attach a USB wireless keyboard made specifically for devices like Kodi. These small keyboards, sometimes call <b>living room keyboards</b>, can be helpful when using the search feature in Kodi. In reality, the remote control smartphone app has been able to satisfy nearly all needs. The Kodi wiki has a page that lists all <a href="https://kodi.wiki/view/Keyboard_controls" target="_blank">keyboard commands</a> available in Kodi.</p>
+
+
+<h4 class="mt-4">Smartphone Apps</h4>
+<p class="mt-2">The Kodi Team has developed an official remote control app named <b>Kore</b>. The app is available for Android and iOS devices. The following screenshots show the app on an Android smartphone.</p>
+<div id="columns">
+
+  <figure class="figure">
+    <a href="content/configuration/kodi-remote-Kore-GooglePlayStore.png" target="_blank"><img src="content/configuration/kodi-remote-Kore-GooglePlayStore.png" class="figure-img img-fluid mx-auto d-block" alt="xxx"></a>
+    <figcaption class="figure-caption">Kore remote app in Google Play store on Android phone.</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <a href="content/configuration/kodi-Kore1.png" target="_blank"><img src="content/configuration/kodi-Kore1.png" class="figure-img img-fluid mx-auto d-block" alt="xxx"></a>
+    <figcaption class="figure-caption">Kore remote control while movie playing.</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <a href="content/configuration/kodi-Kore2.png" target="_blank"><img src="content/configuration/kodi-Kore2.png" class="figure-img img-fluid mx-auto d-block" alt="xxx"></a>
+    <figcaption class="figure-caption">Kore remote control displaying movie information.</figcaption>
+  </figure>  
+
+</div>
+
+<p class="mt-2">The smartphone (or tablet) running the app must be connected to the same network to which the Kodi box is connected. In other words, if the Kodi box is connected to your WiFi network named "MyWifi" then the phone must also be connected to the WiFi network "MyWiFi" for the app to communicate with the Kodi box. This means the app will work anywhere in the house. For example, if the Kodi box is playing music on the TV in the living room you can control the volume from the kitchen. Another great feature is the app has the ability to pause playback on Kodi whenever a phone call is received.</p>
+
+
+<h4 class="mt-4">Physical Remotes</h4>
+<p class="mt-2">Kodi can be controlled with physical remote controls such as those that come with TVs or an off-the-shelf "universal" remote. This is a good option if the Kodi box os not connected to a network or; if you do not have a smartphone or tablet.</p>
+
+<h5 class="mt-3">CEC Remotes</h5>
+<p class="mt-2">Most remote controls that come with LED TVs support the Consumer Electronics Control (CEC) protocol which can send commands down an HDMI cable to a compatible device of which Kodi is one. It works really well to turn the TV on or off when the Kodi box is powered on or off. Volume control also works really well. However, in practice CEC tends to be a detriment if the Kodi box is left on 24/7 as are ours. One problem we experienced is the TV powering on when the Kodi box is rebooted at 2AM each night. Our Samsung LCD TV (circa 2005) does not have the ability to disable CEC. As a result the TV would power on at 2AM when the Kodi box was rebooted by the nightly script. In this case the nightly script that reboots the Kodi box was rescheduled for Noon. This was a time that the TV was not likely being watched but, not too long before someone would see the TV on and turn it off (if not needed).</p>
+
+<h5 class="mt-3">Universal Remotes</h5>
+<p class="mt-2">Kodi supports third-party physical remotes that operate using RF, MEC, or WiFi also known as "universal" remotes. One of the more popular remotes is the Logitech Harmony remote which allowed for advanced key mapping and use over WiFi. Unfortunately, Logitech announced in 2021 they would no-longer be selling these remotes. In reality, we never saw the need for such an expensive remote when the free smartphone app works so well.</p>
+
+
+<h4 class="mt-4">Web Interface</h4>
+<p class="mt-2">In addition to traditional remotes Kodi can be controlled using it's built-in webserver and a browser. In our house this is not really used for daily viewing, but does come in handy from time to time.</p>
+<img src="content/configuration/Kodi-Web-interface-chorus.png" class="img-fluid mx-auto d-block" alt="xxx">
+
 
 <p class="footnote mt-5">kodi/content/configuration/remote_control.html</p>
 
+<style>
+  div#columns {
+      column-count: 3;
+      column-gap: 2em;
+      /* column-rule: 1px solid black; */
+      column-width: 15em;
+  }
+  #columns p:first-of-type {
+      margin-top: 0;  /* align top-row text in first column */
+  }
+
+</style>

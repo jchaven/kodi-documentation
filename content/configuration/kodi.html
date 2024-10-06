@@ -8,16 +8,214 @@
 </nav>
 
 <h1 class="display-4">Kodi</h1>
-<p class="mt-3">After installing LibreELEC on a computer Kodi will start. The following explain how Kodi is configured to play media on TVs.</p>
+<p class="mt-3">After installing LibreELEC and completing the initial setup of Kodi you can tailor Kodi to your needs and add content. The following explains how to configure Kodi to play media on TVs.</p>
 
-<pre>
-  - Name
-  - Sources
-  - Skin
-    - Shelves
-  
-  </pre>
-  
+<h4 class="mt-4">Appearance</h4>
+<p class="mt-2">Two things make Kodi the best media player for TVs: first, it can play literally any type of media file; second, you can make it look almost anyway you wish using "skins". The default skin for Kodi is a blue-black colored skin named "Estuary". This skin works with any add-on installed from the Kodi official repository.</p>
+
+<p class="mt-2">The skin of choice for all Kodi boxes is the <b>Amber</b> skin. This skin provides a nice balance between simplicity and features found in more advanced (and resource-intensive) skins. The skin has extensive settings that can be modified to change the behavior and appearance. After installing the skin copy the <b>settings.xml</b> file from another working Kodi box or from a recent backup of <b>XBMC-2308</b>. The location of the settings.xml file in Kodi is: <i>/storage/.kodi/userdata/addon_data/skin.amber/settings.xml</i></p>
+
+
+<p class="mt-2 help" role="alert">If something in Kodi stops working (other than playing media) or an add-on's configuration page is missing change the skin back to default and attempt to make the change. Once resolved you can change the skin back.</p>
+
+
+<h4 class="mt-5">Add-Ons</h4>
+<p class="mt-2">Another great feature of Kodi is it's support for add-ons that extend the functionality or change the behavior of Kodi. Some add-ons are created by the Kodi Team (the developers and maintainers of the Kodi software) while many more are created by regular Kodi users.</p>
+
+<p class="mt-2">The following table lists the add-ons installed on the Kodi boxes.</p>
+<div class="m-3 table-responsive">
+  <table class="table">
+  <tbody>
+    <tr>
+      <td class="nowrap">Backup (script.xbmcbackup)</td>
+      <td>Provides scheduled backups and restoring of the Kodi databases, add-ons and add-on data, playlists, etc.</td>
+    </tr>
+    <tr>
+      <td class="nowrap">Trakt (script.trakt)</td>
+      <td>Scrobbler for TV shows and movies to the website Trakt.tv. Although not <i>needed</i> the information provided by Trakt is interesting and has made it easier to mark specific episodes as watched in Kodi after new installs.</td>
+    </tr>
+    <tr>
+      <td class="nowrap">Youtube (plugin.video.youtube)</td>
+      <td>Allows Kodi to play Youtube videos (without ads) directly from Kodi or through the use of the browser plugin <b>Play to Kodi</b> from other devices.<br>Note: the Google account used is one specifically created for the TVs.</td>
+    </tr>
+    <tr>
+      <td class="nowrap">Last.fm (service.scrobbler.lastfm)</td>
+      <td>Service that scrobbles music played to Last.fm. The plugin scrobbles tracks to the account "jchaven" with some directories excluded.</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<h5 class="mt-3">Repositories</h5>
+<p class="mt-2">Add-ons are installed from online software sources called <b>Repositories</b> or from software packages manually downloaded from the developer's website using the <b>Install from Zip</b> option in Kodi. As a general rule add-ons should only be installed from the official Kodi repository or from well-trusted developers.</p>
+
+<h5 class="mt-3">Illegal Add-Ons</h5>
+<p class="mt-2">Kodi is often described by news organizations and law enforcement as a player for pirated media or aligned with online piracy outlets. Although Kodi <i>can</i> play pirated media (like legally-sourced media) it is not a tool to download or play pirated media. However, several plugins have been created that can find and play pirated media or pirated media streams. The Kodi Team calls these <b>illegal addons</b> and will not offer support in forums if any illegal addons are listed in uploaded logs. Almost all requests for support require a full debug log be uploaded to the forum to receive help. Additionally, Kodi just works better when the number of add-ons is limited and only installed from official repositories.</p>
+
+
+<h4 class="mt-4">Sources</h4>
+<p class="mt-2">The content that Kodi plays and the type of content (TV, Movies, etc.) is defined by adding the directories where the media is located the sources for TVs, Movies, or Music. Editing sources Kodi can be done using the settings menu or by editing the <a href="https://www.pcmag.com/encyclopedia/term/xml" target="_blank">XML</a> file directly.</p>
+
+<h5 class="mt-3">Edit Using GUI</h5>
+<p class="mt-2">You can edit the sources for the types of content (TV, Movies, etc.) in Kodi using Kodi Settings menus. The following images show the major menu windows to edit a source in Kodi. The main sources are configured to use the mount points defined when setting-up <a href="#" onclick="loadPage('content/configuration/libreelec.html')">LibreELEC</a>.</p>
+
+<div id="columns">
+
+    <figure class="figure">
+        <a href="content/configuration/kodi-settings-library-amber.png" target="_blank"><img src="content/configuration/kodi-settings-library-amber.png" class="figure-img img-fluid mx-auto d-block" alt="xxx"></a>
+        <figcaption class="figure-caption">Kodi settings to edit Library</figcaption>
+    </figure>
+
+    <figure class="figure">
+        <a href="content/configuration/kodi-sources-edit-amber.png" target="_blank"><img src="content/configuration/kodi-sources-edit-amber.png" class="figure-img img-fluid mx-auto d-block" alt="xxx"></a>
+        <figcaption class="figure-caption">Edit sources menu option in Kodi settings</figcaption>
+    </figure>
+
+    <figure class="figure">
+        <a href="content/configuration/kodi-sources-path-amber.png" target="_blank"><img src="content/configuration/kodi-sources-path-amber.png" class="figure-img img-fluid mx-auto d-block" alt="xxx"></a>
+        <figcaption class="figure-caption">Adding directories to source in Kodi</figcaption>
+    </figure>
+
+</div>
+
+<h5 class="mt-3">Editing XML File</h5>
+<p class="mt-2">Editing sources using the GUI is quite easy and fool-proof. However, if your source has many directories it can be arduous and time consuming to add all the directories to the source. An easier way is to edit the XML file directly. The XML file that Kodi uses to define sources is: <i>/storage/.kodi/userdata/sources.xml</i></p>
+
+<p class="mt-2">The following is the contents of the <b>sources.xml</b> file on one of the Kodi boxes.</p>
+<div class="document">
+<pre><code>
+&lt;sources&gt;
+  &lt;programs&gt;
+      &lt;default pathversion="1"&gt;&lt;/default&gt;
+  &lt;/programs&gt;
+  &lt;video&gt;
+      &lt;default pathversion="1"&gt;&lt;/default&gt;
+      &lt;source&gt;
+          &lt;name&gt;Movies&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Adam/Movies/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Donna/Movies/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Everyone/Movies/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Joey/Movies/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Other&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Other/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Music Videos&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Joey/Music Videos/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Everyone/Music Videos/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;NAS&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;UPnP&lt;/name&gt;
+          &lt;path pathversion="1"&gt;upnp://&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;TV Shows&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/scratch2/TV/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Adam/TV/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Donna/TV/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Everyone/TV/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Joey/TV/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Local Storage&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Download&lt;/name&gt;
+          &lt;path pathversion="1"&gt;smb://192.168.168.53:445/Download/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Public&lt;/name&gt;
+          &lt;path pathversion="1"&gt;smb://192.168.168.248:445/Public/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+  &lt;/video&gt;
+  &lt;music&gt;
+      &lt;default pathversion="1"&gt;&lt;/default&gt;
+      &lt;source&gt;
+          &lt;name&gt;Music&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Adam/Music/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Donna/Music/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Everyone/Music/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Joey/Music/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Internet Streams&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Joey/Streams/&lt;/path&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Donna/Streams/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Miscellaneous Audio&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Other/Miscellaneous Audio/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+  &lt;/music&gt;
+  &lt;pictures&gt;
+      &lt;default pathversion="1"&gt;Pictures&lt;/default&gt;
+      &lt;source&gt;
+          &lt;name&gt;Pictures&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/media/Everyone/Pictures/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+  &lt;/pictures&gt;
+  &lt;files&gt;
+      &lt;default pathversion="1"&gt;&lt;/default&gt;
+      &lt;source&gt;
+          &lt;name&gt;NAS (NFS)&lt;/name&gt;
+          &lt;path pathversion="1"&gt;nfs://192.168.168.53/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;NAS&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/nas/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+      &lt;source&gt;
+          &lt;name&gt;Local Storage&lt;/name&gt;
+          &lt;path pathversion="1"&gt;/storage/&lt;/path&gt;
+          &lt;allowsharing&gt;true&lt;/allowsharing&gt;
+      &lt;/source&gt;
+  &lt;/files&gt;
+  &lt;games&gt;
+      &lt;default pathversion="1"&gt;&lt;/default&gt;
+  &lt;/games&gt;
+&lt;/sources&gt;
+</code></pre>
+</div>  
+
+
+<h4 class="mt-5"></h4>
+<p class="mt-2"></p>
+
 
 <p class="footnote mt-5">kodi/content/configuration/kodi.html</p>
 
+<style>
+  div#columns {
+      column-count: 3;
+      column-gap: 2em;
+      /* column-rule: 1px solid black; */
+      column-width: 15em;
+  }
+  #columns p:first-of-type {
+      margin-top: 0;  /* align top-row text in first column */
+  }
+
+</style>

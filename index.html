@@ -11,26 +11,50 @@
   <link rel="stylesheet" type="text/css" href="../app/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../app/styles.css?v=41">
 
-  <style>
+<!--
+   ____________________________________________________________________
+  /                                                                    \
+ |  This site is running in an Nginx container running on my Unraid     |
+ |  server. I have a slow internet connection so the site will not be   |
+ |  the fastest. However, there will likely never be more than a dozen  |
+ |  visitors to this site during an entire month.                       |
+ |                                                                      |
+ |  If you're here, you're probably interested in how/what this site    |
+ |  is using to display this content. Well, it is simply HTML, CSS,     |
+ |  and just enough Javascript to load the HTML pages. There is no      |
+ |  framework. All the code and content is on Github at:                |
+ |  https://github.com/jchaven/kodi-documentation                       |
+  \                                                                    /
+   --------------------------------------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\    -------------
+                ||----w |         -----------------
+                ||     ||     --------------
+                ||     ||
+                %%     %%
+-->
 
+  <style>
 
   </style>
 
 </head>
 <body>
 
-  <!-- Include the sidebar -->
   <div class="wrapper d-flex align-items-stretch">
+    <!-- Include the sidebar -->
     <nav id="sidebar">
-      <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(logo.jpg?v=11);"></a>
-        <div id="sidebar-container"></div>
+      <div class="p-4 pt-5 container d-flex flex-column h-100">
+        <div id="logo-container"><a href="#" class="img logo rounded-circle mb-5" style="background-image: url(logo.jpg?v=11);"></a></div>
+        <div id="sidebar-container" class="flex-grow-1"></div>
+        <div class="align-self-end copyright">2024 Copyright Info</div>
       </div>  
     </nav>
     <!-- Include the content -->
     <div id="content" class="pt-3 pb-5 px-5">
       
-      <!-- Emergency banner (to show remove class "hidden") -->
+      <!-- Emergency banner (to show remove/rename class "hidden") -->
       <p class="error hidden" role="alert">Emergency banner text. Change as needed.</p>
 
       <!-- main content -->

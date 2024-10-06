@@ -11,14 +11,16 @@
 <p class="mt-3">It is easy to confuse LibreELEC with Kodi itself and several areas on this site will overlap. LibreELEC is the operating system - the software that starts when the computer is turned on. Kodi is the media application that is pre-installed on LibreELEC.</p>
 <img src="content/configuration/LibreElec_About_(Amber).png" class="img-fluid mx-auto d-block" alt="LibreELEC About page on Kodi (using Amber skin)">
 
+<p class="mt-2 note">Until a few years ago Kodi was called <b>XBMC</b> which stood for <i>XBox Media Center</i>. The named was changed for copyright reasons.</p>
+
 <h4 class="mt-4">Installation</h4>
-<p class="mt-2">Installing LibreELEC is done by downloading the current version from the <a href="https://libreelec.tv/" target="blank">LibreELEC website</a> and writing the image to a high-quality thumbdrive. The easiest way to write the image is to use the <b>LibreELEC USB-SD Creator</b> from the LibreELEC downloads page. This tool will automatically download the selected version and write it to the thumbdrive you choose. Alternatively, you can download the image and write it to a USB drive manually in Linux.</p>
+<p class="mt-2">Installing LibreELEC is done by downloading the current version from the <a href="https://libreelec.tv/" target="blank">LibreELEC website</a> and writing the image to a thumbdrive. The easiest way to write the image is to use the <b>LibreELEC USB-SD Creator</b> from the LibreELEC downloads page on a computer running Windows. This tool will automatically download the selected version and write it to the thumbdrive you choose. Alternatively, you can download the image and write it to a USB drive manually in Linux.</p>
 
 <p class="mt-2">After flashing the image the thumbdrive is plugged into the <b>Beelink Mini S12 Pro</b> mini desktop computer. The computer boots off the flash drive when powered-on and guides you through installation.</p>
 
 
 <h4 class="mt-4">Configuration</h4>
-<p class="mt-2">Getting LibreELEC installed and Kodi running takes answering just a few questions. During installation you'll be prompted to set a <b>Hostname</b>. The naming convention for computer host names used on my network are "XBMC" and a date code indicating the date of installation.</p>
+<p class="mt-2">Getting LibreELEC installed and Kodi running takes answering just a few questions. During installation you'll be prompted to set a <b>Hostname</b>. The naming convention for computer host names used on our network is "XBMC" and a date code indicating the date of installation.</p>
 
 <p class="mt-2">The following table lists the host names for the Kodi boxes installed.</p>
 <div class="m-3 table-responsive">
@@ -41,20 +43,62 @@
 </table>
 </div>
 
-<p class="mt-2 note">Until a few years ago Kodi was called <b>XBMC</b> which stood for <i>XBox Media Center</i>. The named was changed a few years ago for copyright reasons.</p>
+<h5 class="mt-4">Services Enabled</h5>
+<p class="mt-2">During installation you'll be prompted to enable services. Enabling <b>SSH</b> will allow you to access the Kodi box remotely for further configuration and maintenance. Also, during setup enable <b>Remote control via HTTP</b> and allow <b>Remote control from other systems</b> - this allows using a remote control app on a phone. Any further changes can be made using SSH or the remote control app.</p>
+
+<h5 class="mt-4">Reserve IP Address</h5>
+<p class="mt-2">Although not required it is good practice to reserve an IP address in your DHCP server for the MAC of the interface that will be used to connect to the network. This makes remote connections from SSH and the remote control apps more reliable as the IP should never change.</p>
+
+<h5 class="mt-4">SAMBA</h5>
+<p class="mt-2">By enabling SAMBA you can browse the Kodi box from Linux or Windows computers to manage config files, copy local content, and review logs.</p>
+
+<h5 class="mt-4">Credentials</h5>
+<p class="mt-2">Services that allow remote access should require credentials and a user name and password be created. The credentials for the Kodi boxes are the same on all devices and the credentials are not stored anywhere. If you cannot recall the password just change it using the remote (or keyboard) on the Kodi box, then update the remote control app.</p>
+<p class="mt-2">The credentials to login to LibreELEC itself (the operating system on which Kodi runs) can also be changed using <b>Settings</b> in the Kodi interface. However, I leave it as the default since the Kodi boxes are not exposed to the internet. This will likely change in the future and will be different for any Kodi boxes deployed in untrusted networks.</p>
 
 
-<pre>
-- Network config 
-  - reserved IP
-- Services
-  - SSH 
-  - Samba
-  - Credentials
-</pre>
+<h4 class="mt-5" id="mount-points">Mount Points</h4>
+<p class="mt-2">The Windows operating system has a feature called <b>Map Network Drive</b> where you can make accessing a remote directory easier by assigning it a drive letter. For example, you could <i>map</i> the shared directory "Videos" on the remote computer "MyDesktop" to drive "M". During the process you would supply the credentials needed and Windows can remember them. Then to access the remote directory "\\MyDesktop\Videos" you can just click on "M:" and everything in the "Videos" directory would be displayed. If there were a subdirectory in "Videos" named "TV" it would be accessible using <a href="https://www.pcmag.com/encyclopedia/term/unc" target="_blank">UNC</a> with "\\MyDesktop\Videos\TV" or through the mapped drive "M:\TV"</p>
+
+<p class="mt-2">LibreELEC is a Linux operating system which supports a similar feature called <b>Mounting</b> where you can <i>mount</i> a shared directory on a remote computer. Instead of using drive letters (which do not exist in Linux) you would mount a remote directory to a local directory. For example, if "MyDesktop" was a Linux computer sharing the directory "/mnt/user/Videos" you could mount the directory <i>on top</i> of the local directory "/home/john/Videos". The local directory does not need to be empty and the files are not lost when mounting a remote directory atop it. It is just that now when you view the files in the local directory you see the files on the remote computer.</p>
+
+<p class="mt-2">Unlike Windows to make mount points persistent the mounts need to be defined in <b>systemd</b> definition files. See the <a href="content/configuration/XBMC-2308-build-notes.txt" target="_blank">build notes</a> for the actual definitions created on the Kodi box. The following mount points are created in LibreELEC for the sources used by Kodi.</p>
+
+<div class="mt-3 mx-5 table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th class="nowrap">Local Directory</th>
+      <th class="nowrap">Remote Directory</th>
+      <th>Description</th>
+    </tr>
+  </thead>  
+  <tbody>
+    <tr>
+      <td>/storage/nas/media</td>
+      <td>HAVEN-NAS3:/mnt/user/Media</td>
+      <td>Kodi media files (permanent)</td>
+    </tr>
+    <tr>
+      <td>/storage/nas/media2</td>
+      <td>HAVEN-NAS3:/mnt/disks/Media2</td>
+      <td>Kodi media files (temporary)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p class="mt-2 note">Kodi boxes built before May 2024 used <b>Scratch2</b> instead of Media2. When the new server was built the share name was changed. The mount point on the Kodi boxes was preserved to prevent a complete rebuild of the databases.</p>
+
+<h4 class="mt-5">Kodi Settings vs. LibreELEC Settings</h4>
+<p class="mt-2">It is easy to confuse the configuration of LibreELEC and Kodi. Essentially, everything that allows Kodi to work - the hardware, network settings, disks are all configured using <b>LibreELEC Settings</b>. Whereas everything that controls what and how Kodi plays content is configured with <b>Kodi settings</b>.</p>
 
 
+<p class="mt-2">Once LibreELEC is installed and Kodi configured you can still access the LibreELEC settings from the regular Kodi settings menu. The most likely reason to open LibreELEC settings would be to update the password used to access the WiFi network to which LE is connected.</p>
+<img src="content/configuration/LibreElec_Settings.png" class="img-fluid mx-auto d-block" alt="LibreELEC Settings option in Kodi (using Amber skin)">
 
+
+<p class="mt-2"></p>
 
 <p class="footnote mt-5">kodi/content/configuration/libreelec.html</p>
 
