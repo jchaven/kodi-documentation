@@ -23,7 +23,7 @@ This site is purposefully not a blog, CMS, or any type of database-driven site i
 All content displayed is in the subfolder **content**. New files added to the **content** is manually added to the **sidebar.html** file. There is no automation.
 
 ### Giving Back
-I am not a good progarmmer/coder. This code could use help - specifically with the styling for behavior on small screens.
+I am not a good programmer/coder. This code could use help - specifically with the styling for behavior on small screens.
 
 
 ## Authors
