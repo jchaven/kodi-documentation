@@ -27,8 +27,12 @@ Copy the files to any folder on your webserver then browse to that folder. The s
    git clone git clone https://github.com/jchaven/kodi-documentation kodi
 
 
-### Testing with local webserver
-sudo python3 -m http.server 80
+## Testing with local webserver
+
+1. Change directory to the folder created above
+2. Start Python webserver
+   ```bash
+   sudo python3 -m http.server 80
 
 
 
