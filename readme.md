@@ -24,7 +24,6 @@ Copy the files to any folder on your webserver then browse to that folder. The s
    ```bash
    git clone git clone https://github.com/jchaven/kodi-documentation kodi
 
-
 ## Testing with local webserver
 
 1. Change directory to the folder created above
@@ -32,7 +31,6 @@ Copy the files to any folder on your webserver then browse to that folder. The s
    ```bash
    sudo python3 -m http.server 80
 3. Open browser and browse to [localhost/kodi](http://localhost/kodi)
-
 
 ## Contributing
 This site is purposefully not a blog, CMS, or any type of database-driven site intended to be used by non-technical people. This site is meant to be coded by people with technical backgrounds in pure HTML. All HTML, CSS, and Javascript should be just enough to display the information without bloating the code.
