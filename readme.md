@@ -16,14 +16,19 @@ The point is anyone with the slightest experience with HTML can understand and e
 You are free to steal this code for your own use. I ask that any improvements you make get returned.
 Copy the files to any folder on your webserver then browse to that folder. The site should load.
 
-1. Clone the "app" repository to a folder named "app":
+1. Create a folder for the following code on your webserver.
+
+2. Clone the "app" repository to a folder named "app":
    ```bash
    git clone https://github.com/jchaven/app-documentation app
 
-2. Clone this repository to the folder "kodi":
+3. Clone this repository to the folder "kodi":
    ```bash
    git clone git clone https://github.com/jchaven/kodi-documentation kodi
 
+
+### Testing with local webserver
+sudo python3 -m http.server 80
 
 
 
