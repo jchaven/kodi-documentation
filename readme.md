@@ -16,6 +16,16 @@ The point is anyone with the slightest experience with HTML can understand and e
 You are free to steal this code for your own use. I ask that any improvements you make get returned.
 Copy the files to any folder on your webserver then browse to that folder. The site should load.
 
+1. Clone the "app" repository to a folder named "app":
+   ```bash
+   git clone https://github.com/jchaven/app-documentation app
+
+2. Clone this repository to the folder "kodi":
+   ```bash
+   git clone git clone https://github.com/jchaven/kodi-documentation kodi
+
+
+
 
 ## Contributing
 This site is purposefully not a blog, CMS, or any type of database-driven site intended to be used by non-technical people. This site is meant to be coded by people with technical backgrounds in pure HTML. All HTML, CSS, and Javascript should be just enough to display the information without bloating the code.
