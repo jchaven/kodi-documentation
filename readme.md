@@ -17,11 +17,9 @@ You are free to steal this code for your own use. I ask that any improvements yo
 Copy the files to any folder on your webserver then browse to that folder. The site should load.
 
 1. Create a folder for the following code on your webserver.
-
 2. Clone the "app" repository to a folder named "app":
    ```bash
    git clone https://github.com/jchaven/app-documentation app
-
 3. Clone this repository to the folder "kodi":
    ```bash
    git clone git clone https://github.com/jchaven/kodi-documentation kodi
@@ -33,7 +31,7 @@ Copy the files to any folder on your webserver then browse to that folder. The s
 2. Start Python webserver
    ```bash
    sudo python3 -m http.server 80
-
+3. Open browser and browse to [localhost/kodi](http://localhost/kodi)
 
 
 ## Contributing
